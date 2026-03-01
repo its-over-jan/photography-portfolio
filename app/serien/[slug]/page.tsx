@@ -1,9 +1,9 @@
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
-import Image from "next/image";
 import Navigation from "@/components/navigation/Navigation";
 import SeriesHeader from "@/components/ui/SeriesHeader";
 import SeriesNavigation from "@/components/ui/SeriesNavigation";
+import Gallery from "@/components/gallery/Gallery";
 import Footer from "@/components/ui/Footer";
 import { getSeriesBySlug, getAllSlugs, series } from "@/lib/series";
 
@@ -55,47 +55,9 @@ export default async function SeriesPage({ params }: Props) {
         {/* Title */}
         <SeriesHeader series={s} />
 
-        {/* Photo Grid – two explicit flex columns */}
-        <section
-          className="page-padding pb-16 flex flex-col lg:flex-row gap-6"
-          aria-label={`${s.title} photographs`}
-        >
-          {/* Left column: even indices */}
-          <div className="flex flex-col gap-6 lg:flex-1">
-            {s.photos.filter((_, i) => i % 2 === 0).map((photo, i) => (
-              <div key={photo.src} className="overflow-hidden bg-primary/5">
-                <Image
-                  src={photo.src}
-                  alt={photo.alt}
-                  width={photo.width}
-                  height={photo.height}
-                  sizes="(max-width: 1024px) 100vw, 50vw"
-                  className="w-full h-auto block"
-                  loading={i < 3 ? "eager" : "lazy"}
-                />
-              </div>
-            ))}
-          </div>
+        {/* Gallery with built-in Lightbox */}
+        <Gallery photos={s.photos} seriesTitle={s.title} />
 
-          {/* Right column: odd indices */}
-          <div className="flex flex-col gap-6 lg:flex-1">
-            {s.photos.filter((_, i) => i % 2 !== 0).map((photo, i) => (
-              <div key={photo.src} className="overflow-hidden bg-primary/5">
-                <Image
-                  src={photo.src}
-                  alt={photo.alt}
-                  width={photo.width}
-                  height={photo.height}
-                  sizes="(max-width: 1024px) 100vw, 50vw"
-                  className="w-full h-auto block"
-                  loading={i < 3 ? "eager" : "lazy"}
-                />
-              </div>
-            ))}
-          </div>
-        </section>
-
-        {/* Prev / Next Navigation */}
         <SeriesNavigation prev={prev} next={next} />
       </main>
 
