@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Cormorant_Garamond } from "next/font/google";
 import "./globals.css";
+import { siteUrl } from "@/lib/config";
 
 // Cormorant Garamond – headings & logo (self-hosted via next/font)
 const cormorantGaramond = Cormorant_Garamond({
@@ -12,6 +13,7 @@ const cormorantGaramond = Cormorant_Garamond({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(siteUrl),
   title: {
     default: "Jan Overhaus – Photography",
     template: "%s | Jan Overhaus",
@@ -20,9 +22,18 @@ export const metadata: Metadata = {
     "Analog and digital photography — Landscape, Street und Architecture.",
   openGraph: {
     title: "Jan Overhaus – Photography",
-    description: "Analog and digital photography — Landscape, Street und Architecture.",
+    description:
+      "Analog and digital photography — Landscape, Street und Architecture.",
+    url: siteUrl,
+    siteName: "Jan Overhaus",
     type: "website",
     locale: "de_DE",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Jan Overhaus – Photography",
+    description:
+      "Analog and digital photography — Landscape, Street und Architecture.",
   },
 };
 
