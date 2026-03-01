@@ -1,0 +1,103 @@
+@import "tailwindcss";
+
+/* ─── Design Tokens ────────────────────────────────────────────────────── */
+
+@theme {
+  /* Colors */
+  --color-background: #FBFBFB;
+  --color-primary:    #1A1A1A;
+
+  /* Spacing tokens (for page padding) */
+  --spacing-page:        3rem;    /* 48px desktop */
+  --spacing-page-mobile: 1.25rem; /* 20px mobile  */
+}
+
+/* Font families reference next/font CSS variables */
+@theme inline {
+  --font-heading: var(--font-cormorant), 'Cormorant Garamond', Georgia, serif;
+  --font-body:    'Satoshi', system-ui, sans-serif;
+}
+
+/* ─── Base Styles ──────────────────────────────────────────────────────── */
+
+:root {
+  --background: #FBFBFB;
+  --foreground: #1A1A1A;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ─── Typography Utilities ─────────────────────────────────────────────── */
+
+/* H1: 56px desktop / 28px mobile */
+.text-h1 {
+  font-family: var(--font-heading);
+  font-size: clamp(1.75rem, 4vw, 3.5rem); /* 28px → 56px */
+  line-height: 1.1;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+}
+
+/* H2: 28px desktop / 18px mobile */
+.text-h2 {
+  font-family: var(--font-heading);
+  font-size: clamp(1.125rem, 2.5vw, 1.75rem); /* 18px → 28px */
+  line-height: 1.2;
+  font-weight: 400;
+}
+
+/* Navigation: 16px */
+.text-nav {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.5;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+/* Body: 16px */
+.text-body {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.6;
+  font-weight: 400;
+}
+
+/* Body small: 14px */
+.text-body-sm {
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  line-height: 1.5;
+  font-weight: 400;
+}
+
+/* ─── Page Layout ──────────────────────────────────────────────────────── */
+
+.page-padding {
+  padding-left: var(--spacing-page-mobile);
+  padding-right: var(--spacing-page-mobile);
+}
+
+@media (min-width: 768px) {
+  .page-padding {
+    padding-left: var(--spacing-page);
+    padding-right: var(--spacing-page);
+  }
+}
+
+/* ─── Transitions ──────────────────────────────────────────────────────── */
+
+* {
+  transition-property: color, background-color, opacity;
+  transition-duration: 200ms;
+  transition-timing-function: ease-in-out;
+}
