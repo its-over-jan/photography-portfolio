@@ -10,6 +10,9 @@
 !.yarn/releases
 !.yarn/versions
 
+# design
+/figma-assets
+
 # testing
 /coverage
 

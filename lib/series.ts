@@ -18,7 +18,7 @@ export const series: Series[] = [
       width: 2000,
       height: 1333,
     },
-    photos: Array.from({ length: 25 }, (_, i) => ({
+    photos: Array.from({ length: 21 }, (_, i) => ({
       src: `/images/street/street-${String(i + 1).padStart(2, "0")}.jpg`,
       alt: `Street photograph ${i + 1}`,
       width: 2000,
@@ -37,7 +37,7 @@ export const series: Series[] = [
       width: 2000,
       height: 1333,
     },
-    photos: Array.from({ length: 17 }, (_, i) => ({
+    photos: Array.from({ length: 15 }, (_, i) => ({
       src: `/images/architecture/architecture-${String(i + 1).padStart(2, "0")}.jpg`,
       alt: `Architecture photograph ${i + 1}`,
       width: 2000,
@@ -56,7 +56,7 @@ export const series: Series[] = [
       width: 2000,
       height: 1333,
     },
-    photos: Array.from({ length: 16 }, (_, i) => ({
+    photos: Array.from({ length: 15 }, (_, i) => ({
       src: `/images/landscape/landscape-${String(i + 1).padStart(2, "0")}.jpg`,
       alt: `Landscape photograph ${i + 1}`,
       width: 2000,
