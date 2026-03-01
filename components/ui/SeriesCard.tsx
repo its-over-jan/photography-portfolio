@@ -33,6 +33,8 @@ export default function SeriesCard({
           sizes="(max-width: 768px) calc(100vw - 40px), calc(100vw - 96px)"
           className="object-cover"
           priority={priority}
+          placeholder={s.heroImage.blurDataURL ? "blur" : "empty"}
+          blurDataURL={s.heroImage.blurDataURL}
         />
       </div>
 

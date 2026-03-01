@@ -46,6 +46,8 @@ export default function Gallery({ photos, seriesTitle }: GalleryProps) {
         sizes="(max-width: 1024px) 100vw, 50vw"
         className="w-full h-auto block transition-opacity duration-300 hover:opacity-90"
         loading={colIndex < eagerCount ? "eager" : "lazy"}
+        placeholder={photo.blurDataURL ? "blur" : "empty"}
+        blurDataURL={photo.blurDataURL}
       />
     </button>
   );

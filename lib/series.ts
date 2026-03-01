@@ -1,4 +1,5 @@
 import type { Series } from "@/types";
+import { blurData } from "@/lib/blur-data.generated";
 
 /**
  * Static series configuration.
@@ -17,13 +18,12 @@ export const series: Series[] = [
       alt: "Hamburg docks bridge with lone figure",
       width: 2000,
       height: 1333,
+      blurDataURL: blurData["/images/street/street-06.jpg"],
     },
-    photos: Array.from({ length: 21 }, (_, i) => ({
-      src: `/images/street/street-${String(i + 1).padStart(2, "0")}.jpg`,
-      alt: `Street photograph ${i + 1}`,
-      width: 2000,
-      height: 1333,
-    })),
+    photos: Array.from({ length: 21 }, (_, i) => {
+      const src = `/images/street/street-${String(i + 1).padStart(2, "0")}.jpg`;
+      return { src, alt: `Street photograph ${i + 1}`, width: 2000, height: 1333, blurDataURL: blurData[src] };
+    }),
   },
   {
     slug: "architecture",
@@ -36,13 +36,12 @@ export const series: Series[] = [
       alt: "Berlin government building with distinctive round window",
       width: 2000,
       height: 1333,
+      blurDataURL: blurData["/images/architecture/architecture-04.jpg"],
     },
-    photos: Array.from({ length: 15 }, (_, i) => ({
-      src: `/images/architecture/architecture-${String(i + 1).padStart(2, "0")}.jpg`,
-      alt: `Architecture photograph ${i + 1}`,
-      width: 2000,
-      height: 1333,
-    })),
+    photos: Array.from({ length: 15 }, (_, i) => {
+      const src = `/images/architecture/architecture-${String(i + 1).padStart(2, "0")}.jpg`;
+      return { src, alt: `Architecture photograph ${i + 1}`, width: 2000, height: 1333, blurDataURL: blurData[src] };
+    }),
   },
   {
     slug: "landscape",
@@ -55,13 +54,12 @@ export const series: Series[] = [
       alt: "Analog sea photograph with dramatic sky",
       width: 2000,
       height: 1333,
+      blurDataURL: blurData["/images/landscape/landscape-04.jpg"],
     },
-    photos: Array.from({ length: 15 }, (_, i) => ({
-      src: `/images/landscape/landscape-${String(i + 1).padStart(2, "0")}.jpg`,
-      alt: `Landscape photograph ${i + 1}`,
-      width: 2000,
-      height: 1333,
-    })),
+    photos: Array.from({ length: 15 }, (_, i) => {
+      const src = `/images/landscape/landscape-${String(i + 1).padStart(2, "0")}.jpg`;
+      return { src, alt: `Landscape photograph ${i + 1}`, width: 2000, height: 1333, blurDataURL: blurData[src] };
+    }),
   },
 ];
 

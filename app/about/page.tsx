@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Navigation from "@/components/navigation/Navigation";
 import Footer from "@/components/ui/Footer";
+import { blurData } from "@/lib/blur-data.generated";
 
 export const metadata: Metadata = {
   title: "About",
@@ -27,6 +28,8 @@ export default function AboutPage() {
                 height={600}
                 className="w-full md:w-auto h-auto object-contain object-left"
                 priority
+                placeholder="blur"
+                blurDataURL={blurData["/images/self-portrait/self-portrait-01.jpg"]}
               />
             </div>
 
