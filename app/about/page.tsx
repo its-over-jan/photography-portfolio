@@ -15,40 +15,43 @@ export default function AboutPage() {
       <Navigation />
 
       <main>
-        <section className="page-padding py-10 md:py-20">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-20 items-start max-w-5xl">
+        <section className="page-padding py-10">
+          <div className="flex flex-col md:flex-row items-start gap-10">
             {/* Portrait */}
-            <div className="relative aspect-3/4 overflow-hidden bg-primary/5">
+            <div className="w-full md:w-auto md:shrink-0 bg-primary/5">
               <Image
                 src="/images/self-portrait/self-portrait-01.jpg"
                 alt="Jan Overhaus with analog Canon camera"
-                fill
                 sizes="(max-width: 768px) 100vw, 50vw"
-                className="object-cover"
+                width={400}
+                height={600}
+                className="w-full md:w-auto h-auto object-contain object-left"
                 priority
               />
             </div>
 
             {/* Text */}
-            <div className="flex flex-col justify-center gap-8">
-              <h1 className="text-h1">Jan Overhaus</h1>
+            <div className="flex flex-col gap-10 max-w-prose">
+              <h1 className="text-h2 uppercase">About</h1>
 
               <div className="flex flex-col gap-4">
-                <p className="text-body text-primary/80 leading-relaxed">
-                  Some images arrive. They don't ask for permission — they
-                  simply appear in a particular quality of light, in the way a
-                  shadow falls across a face or a building, in the brief
-                  geometry of a stranger's passing.
+                <p className="text-body text-primary leading-relaxed">
+                  My photography is driven by an attention to what is often
+                  overlooked: the way light carves through shadow, the geometry
+                  hidden in a façade, the pattern that reveals itself when you
+                  slow down long enough to see it. Whether on the streets of a
+                  European city or in a quiet corner of everyday life, I am
+                  drawn to moments of fleeting beauty — brief, fragile, and
+                  entirely unrepeatable.
                 </p>
-                <p className="text-body text-primary/80 leading-relaxed">
-                  My work moves between analog and digital — between the slow
-                  deliberateness of film and the immediacy of a sensor. Both
-                  matter. Both teach patience in different ways.
-                </p>
-                <p className="text-body text-primary/80 leading-relaxed">
-                  Based in Berlin, I photograph landscapes that hold silence,
-                  streets that tell stories without words, and architecture that
-                  reveals the ideas frozen inside concrete and glass.
+                <p className="text-body text-primary leading-relaxed">
+                  I work across both analog film and digital, each medium
+                  demanding its own kind of seeing. For my black-and-white work,
+                  I develop negatives and make prints by hand in the darkroom —
+                  a slow, deliberate process I consider inseparable from the
+                  images it produces. In an age of immediacy, I find meaning in
+                  craft, in patience, and in the belief that a photograph should
+                  be made, not just taken.
                 </p>
               </div>
 
@@ -57,7 +60,7 @@ export default function AboutPage() {
                   For inquiries:{" "}
                   <a
                     href="mailto:jan.overhaus@icloud.com"
-                    className="text-primary hover:opacity-60 transition-opacity underline underline-offset-4"
+                    className="text-primary underline underline-offset-4"
                   >
                     jan.overhaus@icloud.com
                   </a>

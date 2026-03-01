@@ -1,4 +1,4 @@
-export type SeriesSlug = "landscape" | "street" | "architecture";
+export type SeriesSlug = "street" | "architecture" | "landscape";
 
 export interface Photo {
   src: string;

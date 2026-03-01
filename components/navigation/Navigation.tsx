@@ -54,18 +54,18 @@ export default function Navigation() {
           aria-expanded={menuOpen}
         >
           <span
-            className={`block w-5 h-px bg-primary transition-transform duration-300 ${
+            className={`block w-5 h-px bg-primary transition-transform duration-300 ease-in-out ${
               menuOpen ? "rotate-45 translate-y-2" : ""
             }`}
           />
           <span
-            className={`block w-5 h-px bg-primary transition-opacity duration-300 ${
+            className={`block w-5 h-px bg-primary transition-opacity duration-300 ease-in-out ${
               menuOpen ? "opacity-0" : ""
             }`}
           />
           <span
-            className={`block w-5 h-px bg-primary transition-transform duration-300 ${
-              menuOpen ? "-rotate-45 -translate-y-2" : ""
+            className={`block w-5 h-px bg-primary transition-transform duration-300 ease-in-out ${
+              menuOpen ? "-rotate-45 -translate-y-1.5" : ""
             }`}
           />
         </button>

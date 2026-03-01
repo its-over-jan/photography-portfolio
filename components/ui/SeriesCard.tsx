@@ -25,7 +25,7 @@ export default function SeriesCard({
       aria-label={`${s.title} – ${s.subtitle}`}
     >
       {/* Image */}
-      <div className="relative w-full aspect-video overflow-hidden bg-primary/5 max-h-[600px]">
+      <div className="relative w-full aspect-video overflow-hidden bg-primary/5 max-h-150">
         <Image
           src={s.heroImage.src}
           alt={s.heroImage.alt}
