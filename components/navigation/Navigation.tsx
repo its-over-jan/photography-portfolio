@@ -23,10 +23,7 @@ export default function Navigation() {
         aria-label="Main navigation"
       >
         {/* Logo – Cormorant Garamond, ALL CAPS, spaced */}
-        <Link
-          href="/"
-          className="font-heading text-5xl uppercase tracking-[0.2em] transition-opacity"
-        >
+        <Link href="/" className="text-h1 uppercase tracking-[0.2em]">
           Jan Overhaus
         </Link>
 
@@ -36,7 +33,7 @@ export default function Navigation() {
             <li key={link.href}>
               <Link
                 href={link.href}
-                className={`text-base tracking-wide transition-opacity ${
+                className={`text-nav tracking-wide transition-opacity ${
                   isActive(link.href) ? "opacity-100" : "opacity-70"
                 }`}
               >
