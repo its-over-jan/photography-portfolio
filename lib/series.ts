@@ -13,8 +13,8 @@ export const series: Series[] = [
     description:
       "Cities breathe differently when you slow down. Street photography is the practice of patience — waiting for the moment when light, geometry, and human presence align into something worth keeping.",
     heroImage: {
-      src: "/images/street/street-01.jpg",
-      alt: "Berlin U-Bahn bridge with lone figure",
+      src: "/images/street/street-06.jpg",
+      alt: "Hamburg docks bridge with lone figure",
       width: 2000,
       height: 1333,
     },
@@ -32,7 +32,7 @@ export const series: Series[] = [
     description:
       "Buildings are frozen ideas. Architecture photography is about finding the intentions hidden in concrete, glass, and steel — the way a facade catches morning light, the geometry of a stairwell, the humanity inside imposing structures.",
     heroImage: {
-      src: "/images/architecture/architecture-12.jpg",
+      src: "/images/architecture/architecture-04.jpg",
       alt: "Berlin government building with distinctive round window",
       width: 2000,
       height: 1333,
@@ -51,7 +51,7 @@ export const series: Series[] = [
     description:
       "Where land meets sky — quiet moments captured in changing light. These images explore the tension between stillness and motion, between the analog grain of film and the clarity of digital.",
     heroImage: {
-      src: "/images/landscape/landscape-13.jpg",
+      src: "/images/landscape/landscape-04.jpg",
       alt: "Analog sea photograph with dramatic sky",
       width: 2000,
       height: 1333,
