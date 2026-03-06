@@ -40,7 +40,7 @@ export default function SeriesCard({
 
       {/* Label below image */}
       <div className="flex items-end mt-3">
-        <p className="text-h2 uppercase">{s.title}</p>
+        <h2 className="text-h2 uppercase">{s.title}</h2>
       </div>
     </Link>
   );

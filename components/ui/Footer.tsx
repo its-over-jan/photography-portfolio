@@ -3,7 +3,7 @@ export default function Footer() {
 
   return (
     <footer className="page-padding py-10 mt-8 border-t border-primary/10">
-      <p className="text-sm text-primary/50 text-center tracking-wide">
+      <p className="text-sm text-primary/60 text-center tracking-wide">
         © Jan Overhaus &nbsp; {year}
       </p>
     </footer>
