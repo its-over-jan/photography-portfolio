@@ -59,7 +59,7 @@ export default function AboutPage() {
               </div>
 
               <div className="pt-4 border-t border-primary/10">
-                <p className="text-body-sm text-primary/50">
+                <p className="text-body-sm text-primary/60">
                   For inquiries:{" "}
                   <a
                     href="mailto:jan.overhaus@icloud.com"
