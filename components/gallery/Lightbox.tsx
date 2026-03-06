@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useCallback } from "react";
+import { useEffect, useCallback, useRef } from "react";
 import Image from "next/image";
 import type { Photo } from "@/types";
 
@@ -22,6 +22,7 @@ export default function Lightbox({
   const photo = photos[currentIndex];
   const hasPrev = currentIndex > 0;
   const hasNext = currentIndex < photos.length - 1;
+  const touchStartX = useRef<number | null>(null);
 
   // Keyboard navigation
   const handleKey = useCallback(
@@ -33,9 +34,26 @@ export default function Lightbox({
     [onClose, onPrev, onNext, hasPrev, hasNext]
   );
 
+  // Swipe navigation
+  const handleTouchStart = useCallback((e: React.TouchEvent) => {
+    touchStartX.current = e.touches[0].clientX;
+  }, []);
+
+  const handleTouchEnd = useCallback(
+    (e: React.TouchEvent) => {
+      if (touchStartX.current === null) return;
+      const delta = e.changedTouches[0].clientX - touchStartX.current;
+      if (Math.abs(delta) > 50) {
+        if (delta < 0 && hasNext) onNext();
+        if (delta > 0 && hasPrev) onPrev();
+      }
+      touchStartX.current = null;
+    },
+    [hasPrev, hasNext, onPrev, onNext]
+  );
+
   useEffect(() => {
     document.addEventListener("keydown", handleKey);
-    // Lock scroll
     document.body.style.overflow = "hidden";
     return () => {
       document.removeEventListener("keydown", handleKey);
@@ -47,13 +65,15 @@ export default function Lightbox({
     <div
       className="fixed inset-0 z-50 bg-background flex items-center justify-center"
       onClick={onClose}
+      onTouchStart={handleTouchStart}
+      onTouchEnd={handleTouchEnd}
       role="dialog"
       aria-modal="true"
       aria-label="Photo lightbox"
     >
       {/* Close button */}
       <button
-        className="absolute top-5 right-6 text-primary/40 hover:text-primary transition-colors text-sm uppercase tracking-widest"
+        className="absolute top-5 right-6 text-primary/40 hover:text-primary transition-colors text-sm uppercase tracking-widest z-10"
         onClick={onClose}
         aria-label="Close"
       >
@@ -61,31 +81,33 @@ export default function Lightbox({
       </button>
 
       {/* Counter */}
-      <p className="absolute bottom-6 left-1/2 -translate-x-1/2 text-primary/40 text-xs tracking-widest uppercase">
+      <p className="absolute bottom-6 left-1/2 -translate-x-1/2 text-primary/40 text-xs tracking-widest uppercase z-10">
         {currentIndex + 1} / {photos.length}
       </p>
 
-      {/* Prev */}
-      {hasPrev && (
-        <button
-          className="absolute left-5 top-1/2 -translate-y-1/2 text-primary/40 hover:text-primary transition-colors px-3 py-6 text-xs tracking-widest uppercase"
-          onClick={(e) => { e.stopPropagation(); onPrev(); }}
-          aria-label="Previous photo"
-        >
-          ←
-        </button>
-      )}
+      {/* Prev – full-height side panel */}
+      <button
+        className="absolute left-0 top-0 h-full w-20 md:w-32 flex items-center justify-center text-primary/20 hover:text-primary transition-colors z-10 disabled:opacity-0 disabled:pointer-events-none"
+        onClick={(e) => { e.stopPropagation(); onPrev(); }}
+        disabled={!hasPrev}
+        aria-label="Previous photo"
+      >
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+          <polyline points="15 18 9 12 15 6" />
+        </svg>
+      </button>
 
-      {/* Next */}
-      {hasNext && (
-        <button
-          className="absolute right-5 top-1/2 -translate-y-1/2 text-primary/40 hover:text-primary transition-colors px-3 py-6 text-xs tracking-widest uppercase"
-          onClick={(e) => { e.stopPropagation(); onNext(); }}
-          aria-label="Next photo"
-        >
-          →
-        </button>
-      )}
+      {/* Next – full-height side panel */}
+      <button
+        className="absolute right-0 top-14 bottom-0 w-20 md:w-32 flex items-center justify-center text-primary/20 hover:text-primary transition-colors z-10 disabled:opacity-0 disabled:pointer-events-none"
+        onClick={(e) => { e.stopPropagation(); onNext(); }}
+        disabled={!hasNext}
+        aria-label="Next photo"
+      >
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+          <polyline points="9 18 15 12 9 6" />
+        </svg>
+      </button>
 
       {/* Image – stopPropagation so clicking the image doesn't close */}
       <div
