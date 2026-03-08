@@ -22,7 +22,7 @@ const satoshi = localFont({
 
 interface Props {
   children: React.ReactNode;
-  params: Promise<{ locale: Locale }>;
+  params: Promise<{ locale: string }>;
 }
 
 export function generateStaticParams() {
@@ -32,9 +32,9 @@ export function generateStaticParams() {
 export async function generateMetadata({
   params,
 }: {
-  params: Promise<{ locale: Locale }>;
+  params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
-  const { locale } = await params;
+  const { locale } = (await params) as { locale: Locale };
   const dict = getDictionary(locale);
   const ogLocale = locale === "de" ? "de_DE" : "en_US";
 
@@ -78,7 +78,7 @@ export async function generateMetadata({
 }
 
 export default async function RootLayout({ children, params }: Props) {
-  const { locale } = await params;
+  const { locale } = (await params) as { locale: Locale };
 
   return (
     <html
