@@ -37,7 +37,15 @@ export const metadata: Metadata = {
     url: siteUrl,
     siteName: "Jan Overhaus",
     type: "website",
-    locale: "de_DE",
+    locale: "en_US",
+    images: [
+      {
+        url: "/images/street/street-06.jpg",
+        width: 2000,
+        height: 1333,
+        alt: "Jan Overhaus Photography – Hamburg docks bridge with lone figure",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
@@ -54,7 +62,7 @@ export default function RootLayout({
 }>) {
   return (
     <html
-      lang="de"
+      lang="en"
       className={`${cormorantGaramond.variable} ${satoshi.variable}`}
     >
       <body className="antialiased">{children}</body>

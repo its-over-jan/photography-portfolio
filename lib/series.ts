@@ -51,7 +51,7 @@ export const series: Series[] = [
       "Where land meets sky — quiet moments captured in changing light. These images explore the tension between stillness and motion, between the analog grain of film and the clarity of digital.",
     heroImage: {
       src: "/images/landscape/landscape-04.jpg",
-      alt: "Analog sea photograph with dramatic sky",
+      alt: "Black and white aerial view of a winding tidal creek through flat marshland",
       width: 2000,
       height: 1333,
       blurDataURL: blurData["/images/landscape/landscape-04.jpg"],

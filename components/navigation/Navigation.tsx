@@ -49,6 +49,7 @@ export default function Navigation() {
           onClick={() => setMenuOpen(!menuOpen)}
           aria-label={menuOpen ? "Menü schließen" : "Menü öffnen"}
           aria-expanded={menuOpen}
+          aria-controls="mobile-menu"
         >
           <span
             className={`block w-5 h-px bg-primary transition-transform duration-300 ease-in-out ${
@@ -70,7 +71,7 @@ export default function Navigation() {
 
       {/* Mobile Menu */}
       {menuOpen && (
-        <div className="md:hidden page-padding pb-8 border-t border-primary/10">
+        <div id="mobile-menu" className="md:hidden page-padding pb-8 border-t border-primary/10">
           <ul className="flex flex-col gap-6 pt-6" role="list">
             {navLinks.map((link) => (
               <li key={link.href}>
