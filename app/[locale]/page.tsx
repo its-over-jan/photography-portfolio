@@ -22,6 +22,7 @@ export default async function HomePage({ params }: Props) {
       <Navigation locale={locale} dict={dict} activeHref={`/${locale}`} />
 
       <main className="pt-10">
+        <h1 className="sr-only">{dict.metadata.title}</h1>
         <section
           aria-label={dict.home.seriesLabel}
           className="flex flex-col gap-10"
