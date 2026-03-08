@@ -25,7 +25,7 @@ export default function SeriesNavigation({
       {/* Previous */}
       {prev ? (
         <Link
-          href={`/serien/${prev.slug}`}
+          href={`/series/${prev.slug}`}
           className="group flex flex-col gap-1.5 max-w-[45%]"
         >
           <span className="text-xs uppercase tracking-[0.15em] text-primary/40">
@@ -40,7 +40,7 @@ export default function SeriesNavigation({
       {/* Next */}
       {next ? (
         <Link
-          href={`/serien/${next.slug}`}
+          href={`/series/${next.slug}`}
           className="group flex flex-col gap-1.5 text-right max-w-[45%] ml-auto"
         >
           <span className="text-xs uppercase tracking-[0.15em] text-primary/40">

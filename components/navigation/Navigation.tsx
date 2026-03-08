@@ -10,7 +10,7 @@ export default function Navigation() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   const navLinks = [
-    ...series.map((s) => ({ href: `/serien/${s.slug}`, label: s.title })),
+    ...series.map((s) => ({ href: `/series/${s.slug}`, label: s.title })),
     { href: "/about", label: "About" },
   ];
 

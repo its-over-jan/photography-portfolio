@@ -20,7 +20,7 @@ export default function SeriesCard({
 }: SeriesCardProps) {
   return (
     <Link
-      href={`/serien/${s.slug}`}
+      href={`/series/${s.slug}`}
       className="group block page-padding"
       aria-label={`${s.title} – ${s.subtitle}`}
     >

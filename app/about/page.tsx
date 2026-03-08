@@ -29,7 +29,9 @@ export default function AboutPage() {
                 className="w-full md:w-auto h-auto object-contain object-left"
                 priority
                 placeholder="blur"
-                blurDataURL={blurData["/images/self-portrait/self-portrait-01.jpg"]}
+                blurDataURL={
+                  blurData["/images/self-portrait/self-portrait-01.jpg"]
+                }
               />
             </div>
 
@@ -60,7 +62,7 @@ export default function AboutPage() {
 
               <div className="pt-4 border-t border-primary/10">
                 <p className="text-body-sm text-primary/60">
-                  For inquiries:{" "}
+                  Get in touch for prints or shooting requests:{" "}
                   <a
                     href="mailto:jan.overhaus@icloud.com"
                     className="text-primary underline underline-offset-4"

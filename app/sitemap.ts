@@ -6,7 +6,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const slugs = getAllSlugs();
 
   const seriesEntries: MetadataRoute.Sitemap = slugs.map((slug) => ({
-    url: `${siteUrl}/serien/${slug}`,
+    url: `${siteUrl}/series/${slug}`,
     lastModified: new Date(),
     changeFrequency: "monthly",
     priority: 0.8,
