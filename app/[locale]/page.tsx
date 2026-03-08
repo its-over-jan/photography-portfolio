@@ -19,7 +19,7 @@ export default async function HomePage({ params }: Props) {
 
   return (
     <>
-      <Navigation locale={locale} dict={dict} />
+      <Navigation locale={locale} dict={dict} activeHref={`/${locale}`} />
 
       <main className="pt-10">
         <section

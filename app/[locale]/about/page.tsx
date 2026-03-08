@@ -33,7 +33,7 @@ export default async function AboutPage({ params }: Props) {
 
   return (
     <>
-      <Navigation locale={locale} dict={dict} />
+      <Navigation locale={locale} dict={dict} activeHref={`/${locale}/about`} />
 
       <main>
         <section className="page-padding py-10">

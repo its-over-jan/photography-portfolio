@@ -76,7 +76,7 @@ export default async function SeriesPage({ params }: Props) {
 
   return (
     <>
-      <Navigation locale={locale} dict={dict} />
+      <Navigation locale={locale} dict={dict} activeHref={`/${locale}/series/${slug}`} />
 
       <main>
         <SeriesHeader series={localizedS} />
