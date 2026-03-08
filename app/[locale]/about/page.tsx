@@ -72,10 +72,10 @@ export default async function AboutPage({ params }: Props) {
                 <p className="text-body-sm text-primary/60">
                   {dict.about.contactText}{" "}
                   <a
-                    href="mailto:jan.overhaus@icloud.com"
+                    href="mailto:info@janoverhaus.com"
                     className="text-primary underline underline-offset-4"
                   >
-                    jan.overhaus@icloud.com
+                    info@janoverhaus.com
                   </a>
                 </p>
               </div>
