@@ -4,14 +4,23 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { series } from "@/lib/series";
+import type { Dictionary, Locale } from "@/lib/i18n";
 
-export default function Navigation() {
+interface NavigationProps {
+  locale: Locale;
+  dict: Dictionary;
+}
+
+export default function Navigation({ locale, dict }: NavigationProps) {
   const pathname = usePathname();
   const [menuOpen, setMenuOpen] = useState(false);
 
   const navLinks = [
-    ...series.map((s) => ({ href: `/series/${s.slug}`, label: s.title })),
-    { href: "/about", label: "About" },
+    ...series.map((s) => ({
+      href: `/${locale}/series/${s.slug}`,
+      label: dict.series[s.slug as keyof typeof dict.series].title,
+    })),
+    { href: `/${locale}/about`, label: dict.nav.about },
   ];
 
   const isActive = (href: string) => pathname === href;
@@ -22,8 +31,8 @@ export default function Navigation() {
         className="page-padding flex items-end justify-between py-6"
         aria-label="Main navigation"
       >
-        {/* Logo – Cormorant Garamond, ALL CAPS, spaced */}
-        <Link href="/" className="text-h1 uppercase tracking-[0.2em]">
+        {/* Logo */}
+        <Link href={`/${locale}`} className="text-h1 uppercase tracking-[0.2em]">
           Jan Overhaus
         </Link>
 
@@ -47,7 +56,7 @@ export default function Navigation() {
         <button
           className="md:hidden flex flex-col gap-1.5 p-2"
           onClick={() => setMenuOpen(!menuOpen)}
-          aria-label={menuOpen ? "Menü schließen" : "Menü öffnen"}
+          aria-label={menuOpen ? dict.nav.closeMenu : dict.nav.openMenu}
           aria-expanded={menuOpen}
           aria-controls="mobile-menu"
         >

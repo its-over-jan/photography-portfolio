@@ -3,6 +3,7 @@
 import { useEffect, useCallback, useRef } from "react";
 import Image from "next/image";
 import type { Photo } from "@/types";
+import type { Dictionary } from "@/lib/i18n";
 
 interface LightboxProps {
   photos: Photo[];
@@ -10,6 +11,7 @@ interface LightboxProps {
   onClose: () => void;
   onPrev: () => void;
   onNext: () => void;
+  dict: Dictionary["lightbox"];
 }
 
 export default function Lightbox({
@@ -18,6 +20,7 @@ export default function Lightbox({
   onClose,
   onPrev,
   onNext,
+  dict,
 }: LightboxProps) {
   const photo = photos[currentIndex];
   const hasPrev = currentIndex > 0;
@@ -75,15 +78,15 @@ export default function Lightbox({
       onTouchEnd={handleTouchEnd}
       role="dialog"
       aria-modal="true"
-      aria-label="Photo lightbox"
+      aria-label={dict.ariaClose}
     >
       {/* Close button */}
       <button
         className="absolute top-5 right-6 text-primary/40 hover:text-primary transition-colors text-sm uppercase tracking-widest z-10"
         onClick={onClose}
-        aria-label="Close"
+        aria-label={dict.ariaClose}
       >
-        Close
+        {dict.close}
       </button>
 
       {/* Counter */}
@@ -99,7 +102,7 @@ export default function Lightbox({
           onPrev();
         }}
         disabled={!hasPrev}
-        aria-label="Previous photo"
+        aria-label={dict.ariaPrev}
       >
         <svg
           width="28"
@@ -123,7 +126,7 @@ export default function Lightbox({
           onNext();
         }}
         disabled={!hasNext}
-        aria-label="Next photo"
+        aria-label={dict.ariaNext}
       >
         <svg
           width="28"

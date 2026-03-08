@@ -4,13 +4,15 @@ import { useState, useCallback } from "react";
 import Image from "next/image";
 import Lightbox from "./Lightbox";
 import type { Photo } from "@/types";
+import type { Dictionary } from "@/lib/i18n";
 
 interface GalleryProps {
   photos: Photo[];
   seriesTitle: string;
+  dict: Dictionary["lightbox"];
 }
 
-export default function Gallery({ photos, seriesTitle }: GalleryProps) {
+export default function Gallery({ photos, seriesTitle, dict }: GalleryProps) {
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
 
   const open = useCallback((index: number) => setSelectedIndex(index), []);
@@ -36,7 +38,7 @@ export default function Gallery({ photos, seriesTitle }: GalleryProps) {
       key={photo.src}
       className="block w-full text-left overflow-hidden bg-primary/5 cursor-zoom-in"
       onClick={() => open(originalIndex)}
-      aria-label={`Open ${seriesTitle} photo ${originalIndex + 1}`}
+      aria-label={dict.openPhoto.replace("{title}", seriesTitle).replace("{n}", String(originalIndex + 1))}
     >
       <Image
         src={photo.src}
@@ -83,6 +85,7 @@ export default function Gallery({ photos, seriesTitle }: GalleryProps) {
           onClose={close}
           onPrev={prev}
           onNext={next}
+          dict={dict}
         />
       )}
     </>

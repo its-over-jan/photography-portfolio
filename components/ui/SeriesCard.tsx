@@ -1,10 +1,12 @@
 import Image from "next/image";
 import Link from "next/link";
 import type { Series } from "@/types";
+import type { Locale } from "@/lib/i18n";
 
 interface SeriesCardProps {
   series: Series;
   priority?: boolean;
+  locale: Locale;
 }
 
 /**
@@ -17,10 +19,11 @@ interface SeriesCardProps {
 export default function SeriesCard({
   series: s,
   priority = false,
+  locale,
 }: SeriesCardProps) {
   return (
     <Link
-      href={`/series/${s.slug}`}
+      href={`/${locale}/series/${s.slug}`}
       className="group block page-padding"
       aria-label={`${s.title} – ${s.subtitle}`}
     >

@@ -3,17 +3,28 @@ import Image from "next/image";
 import Navigation from "@/components/navigation/Navigation";
 import Footer from "@/components/ui/Footer";
 import { blurData } from "@/lib/blur-data.generated";
+import { getDictionary, type Locale } from "@/lib/i18n";
 
-export const metadata: Metadata = {
-  title: "About",
-  description:
-    "Jan Overhaus – photographer based in Berlin. Analog and digital images from Landscape, Street and Architecture.",
-};
+interface Props {
+  params: Promise<{ locale: Locale }>;
+}
 
-export default function AboutPage() {
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { locale } = await params;
+  const dict = getDictionary(locale);
+  return {
+    title: dict.about.title,
+    description: dict.about.metaDescription,
+  };
+}
+
+export default async function AboutPage({ params }: Props) {
+  const { locale } = await params;
+  const dict = getDictionary(locale);
+
   return (
     <>
-      <Navigation />
+      <Navigation locale={locale} dict={dict} />
 
       <main>
         <section className="page-padding py-10">
@@ -37,32 +48,20 @@ export default function AboutPage() {
 
             {/* Text */}
             <div className="flex flex-col gap-10 max-w-prose">
-              <h1 className="text-h2 uppercase">About</h1>
+              <h1 className="text-h2 uppercase">{dict.about.title}</h1>
 
               <div className="flex flex-col gap-4">
                 <p className="text-body text-primary leading-relaxed">
-                  My photography is driven by an attention to what is often
-                  overlooked: the way light carves through shadow, the geometry
-                  hidden in a façade, the pattern that reveals itself when you
-                  slow down long enough to see it. Whether on the streets of a
-                  European city or in a quiet corner of everyday life, I am
-                  drawn to moments of fleeting beauty — brief, fragile, and
-                  entirely unrepeatable.
+                  {dict.about.para1}
                 </p>
                 <p className="text-body text-primary leading-relaxed">
-                  I work across both analog film and digital, each medium
-                  demanding its own kind of seeing. For my black-and-white work,
-                  I develop negatives and make prints by hand in the darkroom —
-                  a slow, deliberate process I consider inseparable from the
-                  images it produces. In an age of immediacy, I find meaning in
-                  craft, in patience, and in the belief that a photograph should
-                  be made, not just taken.
+                  {dict.about.para2}
                 </p>
               </div>
 
               <div className="pt-4 border-t border-primary/10">
                 <p className="text-body-sm text-primary/60">
-                  Get in touch for prints or shooting requests:{" "}
+                  {dict.about.contactText}{" "}
                   <a
                     href="mailto:jan.overhaus@icloud.com"
                     className="text-primary underline underline-offset-4"
