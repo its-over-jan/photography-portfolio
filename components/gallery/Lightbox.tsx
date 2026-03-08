@@ -31,17 +31,23 @@ export default function Lightbox({
       if (e.key === "ArrowLeft" && hasPrev) onPrev();
       if (e.key === "ArrowRight" && hasNext) onNext();
     },
-    [onClose, onPrev, onNext, hasPrev, hasNext]
+    [onClose, onPrev, onNext, hasPrev, hasNext],
   );
 
-  // Swipe navigation
+  // Swipe navigation – nur Single-Touch, Multi-Touch (Pinch-to-Zoom) wird ignoriert
   const handleTouchStart = useCallback((e: React.TouchEvent) => {
+    if (e.touches.length !== 1) return;
     touchStartX.current = e.touches[0].clientX;
   }, []);
 
   const handleTouchEnd = useCallback(
     (e: React.TouchEvent) => {
       if (touchStartX.current === null) return;
+      // Multi-Touch-Ende (z.B. zweiter Finger loslassen): abbrechen
+      if (e.touches.length > 0) {
+        touchStartX.current = null;
+        return;
+      }
       const delta = e.changedTouches[0].clientX - touchStartX.current;
       if (Math.abs(delta) > 50) {
         if (delta < 0 && hasNext) onNext();
@@ -49,7 +55,7 @@ export default function Lightbox({
       }
       touchStartX.current = null;
     },
-    [hasPrev, hasNext, onPrev, onNext]
+    [hasPrev, hasNext, onPrev, onNext],
   );
 
   useEffect(() => {
@@ -88,11 +94,23 @@ export default function Lightbox({
       {/* Prev – full-height side panel */}
       <button
         className="absolute left-0 top-0 h-full w-20 md:w-32 flex items-center justify-center text-primary/20 hover:text-primary transition-colors z-10 disabled:opacity-0 disabled:pointer-events-none"
-        onClick={(e) => { e.stopPropagation(); onPrev(); }}
+        onClick={(e) => {
+          e.stopPropagation();
+          onPrev();
+        }}
         disabled={!hasPrev}
         aria-label="Previous photo"
       >
-        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+        <svg
+          width="28"
+          height="28"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="1.5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        >
           <polyline points="15 18 9 12 15 6" />
         </svg>
       </button>
@@ -100,11 +118,23 @@ export default function Lightbox({
       {/* Next – full-height side panel */}
       <button
         className="absolute right-0 top-14 bottom-0 w-20 md:w-32 flex items-center justify-center text-primary/20 hover:text-primary transition-colors z-10 disabled:opacity-0 disabled:pointer-events-none"
-        onClick={(e) => { e.stopPropagation(); onNext(); }}
+        onClick={(e) => {
+          e.stopPropagation();
+          onNext();
+        }}
         disabled={!hasNext}
         aria-label="Next photo"
       >
-        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+        <svg
+          width="28"
+          height="28"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="1.5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        >
           <polyline points="9 18 15 12 9 6" />
         </svg>
       </button>
