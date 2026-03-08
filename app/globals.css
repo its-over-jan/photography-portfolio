@@ -94,10 +94,3 @@ body {
     }
 }
 
-/* ─── Transitions ──────────────────────────────────────────────────────── */
-
-* {
-    transition-property: color, background-color, opacity;
-    transition-duration: 200ms;
-    transition-timing-function: ease-in-out;
-}

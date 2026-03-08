@@ -32,7 +32,10 @@ export default function Navigation({ locale, dict }: NavigationProps) {
         aria-label="Main navigation"
       >
         {/* Logo */}
-        <Link href={`/${locale}`} className="text-h1 uppercase tracking-[0.2em]">
+        <Link
+          href={`/${locale}`}
+          className="text-h1 uppercase tracking-[0.2em]"
+        >
           Jan Overhaus
         </Link>
 
@@ -43,7 +46,7 @@ export default function Navigation({ locale, dict }: NavigationProps) {
               <Link
                 href={link.href}
                 className={`text-nav tracking-wide transition-opacity ${
-                  isActive(link.href) ? "opacity-100" : "opacity-70"
+                  isActive(link.href) ? "opacity-100" : "opacity-50"
                 }`}
               >
                 {link.label}
@@ -80,7 +83,10 @@ export default function Navigation({ locale, dict }: NavigationProps) {
 
       {/* Mobile Menu */}
       {menuOpen && (
-        <div id="mobile-menu" className="md:hidden page-padding pb-8 border-t border-primary/10">
+        <div
+          id="mobile-menu"
+          className="md:hidden page-padding pb-8 border-t border-primary/10"
+        >
           <ul className="flex flex-col gap-6 pt-6" role="list">
             {navLinks.map((link) => (
               <li key={link.href}>

@@ -45,6 +45,14 @@ export async function generateMetadata({
       template: "%s | Jan Overhaus",
     },
     description: dict.metadata.description,
+    alternates: {
+      canonical: `${siteUrl}/${locale}`,
+      languages: {
+        en: `${siteUrl}/en`,
+        de: `${siteUrl}/de`,
+        "x-default": `${siteUrl}/en`,
+      },
+    },
     openGraph: {
       title: dict.metadata.title,
       description: dict.metadata.description,

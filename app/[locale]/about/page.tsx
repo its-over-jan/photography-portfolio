@@ -4,6 +4,7 @@ import Navigation from "@/components/navigation/Navigation";
 import Footer from "@/components/ui/Footer";
 import { blurData } from "@/lib/blur-data.generated";
 import { getDictionary, type Locale } from "@/lib/i18n";
+import { siteUrl } from "@/lib/config";
 
 interface Props {
   params: Promise<{ locale: Locale }>;
@@ -15,6 +16,14 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: dict.about.title,
     description: dict.about.metaDescription,
+    alternates: {
+      canonical: `${siteUrl}/${locale}/about`,
+      languages: {
+        en: `${siteUrl}/en/about`,
+        de: `${siteUrl}/de/about`,
+        "x-default": `${siteUrl}/en/about`,
+      },
+    },
   };
 }
 

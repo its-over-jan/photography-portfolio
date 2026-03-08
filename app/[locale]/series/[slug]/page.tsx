@@ -7,6 +7,7 @@ import Gallery from "@/components/gallery/Gallery";
 import Footer from "@/components/ui/Footer";
 import { getSeriesBySlug, getAllSlugs, series } from "@/lib/series";
 import { getDictionary, locales, type Locale } from "@/lib/i18n";
+import { siteUrl } from "@/lib/config";
 
 interface Props {
   params: Promise<{ locale: Locale; slug: string }>;
@@ -29,6 +30,14 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: seriesDict.title,
     description: seriesDict.description,
+    alternates: {
+      canonical: `${siteUrl}/${locale}/series/${slug}`,
+      languages: {
+        en: `${siteUrl}/en/series/${slug}`,
+        de: `${siteUrl}/de/series/${slug}`,
+        "x-default": `${siteUrl}/en/series/${slug}`,
+      },
+    },
     openGraph: {
       title: `${seriesDict.title} | Jan Overhaus`,
       description: seriesDict.description,
