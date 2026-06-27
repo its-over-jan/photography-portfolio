@@ -4,6 +4,7 @@ import localFont from "next/font/local";
 import "../globals.css";
 import { siteUrl } from "@/lib/config";
 import { getDictionary, locales, type Locale } from "@/lib/i18n";
+import { Analytics } from "@vercel/analytics/next";
 
 const cormorantGaramond = Cormorant_Garamond({
   weight: ["300", "400", "500", "600"],
@@ -85,7 +86,10 @@ export default async function RootLayout({ children, params }: Props) {
       lang={locale}
       className={`${cormorantGaramond.variable} ${satoshi.variable}`}
     >
-      <body className="antialiased">{children}</body>
+      <body className="antialiased">
+        {children}
+        <Analytics />
+      </body>
     </html>
   );
 }
