@@ -20,9 +20,15 @@ export const series: Series[] = [
       height: 1333,
       blurDataURL: blurData["/images/street/street-06.jpg"],
     },
-    photos: Array.from({ length: 21 }, (_, i) => {
+    photos: Array.from({ length: 22 }, (_, i) => {
       const src = `/images/street/street-${String(i + 1).padStart(2, "0")}.jpg`;
-      return { src, alt: `Street photograph ${i + 1}`, width: 2000, height: 1333, blurDataURL: blurData[src] };
+      return {
+        src,
+        alt: `Street photograph ${i + 1}`,
+        width: 2000,
+        height: 1333,
+        blurDataURL: blurData[src],
+      };
     }),
   },
   {
@@ -38,9 +44,15 @@ export const series: Series[] = [
       height: 1333,
       blurDataURL: blurData["/images/architecture/architecture-04.jpg"],
     },
-    photos: Array.from({ length: 15 }, (_, i) => {
+    photos: Array.from({ length: 17 }, (_, i) => {
       const src = `/images/architecture/architecture-${String(i + 1).padStart(2, "0")}.jpg`;
-      return { src, alt: `Architecture photograph ${i + 1}`, width: 2000, height: 1333, blurDataURL: blurData[src] };
+      return {
+        src,
+        alt: `Architecture photograph ${i + 1}`,
+        width: 2000,
+        height: 1333,
+        blurDataURL: blurData[src],
+      };
     }),
   },
   {
@@ -56,9 +68,15 @@ export const series: Series[] = [
       height: 1333,
       blurDataURL: blurData["/images/landscape/landscape-04.jpg"],
     },
-    photos: Array.from({ length: 15 }, (_, i) => {
+    photos: Array.from({ length: 16 }, (_, i) => {
       const src = `/images/landscape/landscape-${String(i + 1).padStart(2, "0")}.jpg`;
-      return { src, alt: `Landscape photograph ${i + 1}`, width: 2000, height: 1333, blurDataURL: blurData[src] };
+      return {
+        src,
+        alt: `Landscape photograph ${i + 1}`,
+        width: 2000,
+        height: 1333,
+        blurDataURL: blurData[src],
+      };
     }),
   },
 ];
